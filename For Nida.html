@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Nida</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fdf1f1;--bg2:#f3e6fa;--ink:#3a1f3d;--soft:#7a5a7d;--rose:#e9708a;--rose2:#f6b3c1;--card:rgba(255,255,255,.7);--line:rgba(58,31,61,.12);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#241328;--bg2:#1a1030;--ink:#fbe8ee;--soft:#c9a9cf;--rose:#f27d96;--rose2:#8a3b5a;--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.14)}}
+:root[data-theme="dark"]{--bg:#241328;--bg2:#1a1030;--ink:#fbe8ee;--soft:#c9a9cf;--rose:#f27d96;--rose2:#8a3b5a;--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.14)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:linear-gradient(160deg,var(--bg),var(--bg2));background-attachment:fixed;min-height:100vh;overflow-x:hidden;line-height:1.6}
+h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.1}
+.petals{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.petal{position:absolute;top:-40px;font-size:18px;opacity:.55;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg) translateX(40px)}}
+main{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 20px 80px}
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:18px}
+.name{font-size:clamp(64px,19vw,150px);letter-spacing:-.03em;color:var(--rose);display:flex}
+.name span{display:inline-block;opacity:0;transform:translateY(40px) scale(.8);animation:pop .9s cubic-bezier(.2,1.4,.4,1) forwards}
+.name span:nth-child(1){animation-delay:.1s}.name span:nth-child(2){animation-delay:.25s}.name span:nth-child(3){animation-delay:.4s}.name span:nth-child(4){animation-delay:.55s}
+@keyframes pop{to{opacity:1;transform:none}}
+.hero p{font-size:clamp(18px,4vw,22px);color:var(--soft);max-width:30ch;opacity:0;animation:pop 1s .9s forwards}
+.heart{font-size:48px;animation:beat 1.4s ease-in-out infinite;cursor:pointer;background:none;border:0}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.18)}}
+section{margin-top:72px}
+h2{font-size:clamp(30px,6vw,42px);margin-bottom:10px}
+.sub{color:var(--soft);margin-bottom:24px}
+.card{background:var(--card);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:28px;padding:28px}
+.breath{display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
+.orb{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff7,var(--rose) 70%);box-shadow:0 0 60px var(--rose2);display:grid;place-items:center;color:#fff;font-family:'Fraunces',serif;font-size:22px;transition:transform 4s ease-in-out}
+.orb.in{transform:scale(1.45)}
+.btn{font:inherit;font-weight:500;border:0;border-radius:99px;padding:13px 26px;background:var(--rose);color:#fff;cursor:pointer;transition:transform .2s}
+.btn:active{transform:scale(.95)}
+.btn:focus-visible,.heart:focus-visible,.chk:focus-visible,.mood button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.list{display:grid;gap:12px}
+.chk{display:flex;align-items:center;gap:14px;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 18px;cursor:pointer;transition:background .3s,transform .2s}
+.chk .box{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--rose);display:grid;place-items:center;color:#fff;font-size:15px;transition:background .3s,transform .4s cubic-bezier(.2,1.6,.4,1)}
+.chk[aria-pressed=true] .box{background:var(--rose);transform:rotate(360deg) scale(1.1)}
+.chk[aria-pressed=true] b{text-decoration:line-through;opacity:.55}
+.chk small{display:block;color:var(--soft)}
+.progress{height:8px;border-radius:9px;background:var(--line);margin-bottom:18px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rose2),var(--rose));transition:width .6s}
+.mood{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.mood button{font:inherit;font-size:16px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:10px 18px;cursor:pointer}
+.mood button[aria-pressed=true]{background:var(--rose);color:#fff}
+.msg{min-height:96px;font-family:'Fraunces',serif;font-style:italic;font-size:clamp(20px,4.5vw,26px)}
+.msg.swap{animation:pop .7s both}
+.note{font-size:14px;color:var(--soft);text-align:center;margin-top:64px}
+.float{position:fixed;font-size:26px;pointer-events:none;z-index:5;animation:up 1.8s ease-out forwards}
+@keyframes up{to{transform:translate(var(--x),-60vh) scale(1.6);opacity:0}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s,transform .9s}
+.reveal.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.name span,.hero p,.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="petals" id="petals" aria-hidden="true"></div>
+<main>
+<header class="hero">
+  <button class="heart" id="heart" aria-label="Send hearts">💗</button>
+  <h1 class="name" aria-label="Nida"><span>N</span><span>i</span><span>d</span><span>a</span></h1>
+  <p>Be gentle with yourself today. You don’t have to do anything but rest.</p>
+</header>
+
+<section class="reveal">
+  <h2>Breathe with me</h2>
+  <p class="sub">Slow breaths help tight muscles let go. Tap start and follow the glow.</p>
+  <div class="card breath">
+    <div class="orb" id="orb" aria-live="polite">Ready</div>
+    <button class="btn" id="bstart">Start breathing</button>
+  </div>
+</section>
+
+<section class="reveal">
+  <h2>Comfort checklist</h2>
+  <p class="sub">Tap each one as you do it.</p>
+  <div class="progress"><i id="bar"></i></div>
+  <div class="list" id="list"></div>
+</section>
+
+<section class="reveal">
+  <h2>How are you feeling?</h2>
+  <p class="sub">Pick one. I have something for you.</p>
+  <div class="mood" id="mood"></div>
+  <div class="card"><p class="msg" id="msg">Choose a feeling above.</p></div>
+</section>
+
+<section class="reveal">
+  <h2>A little note</h2>
+  <div class="card"><p class="msg" style="min-height:0">Pain makes everything feel heavier, but it passes, and I’m here until it does. You are stronger than you feel right now. I love you, Nida. 💕</p></div>
+</section>
+
+<p class="note">If the pain is severe or feels different from usual, please talk to a doctor.</p>
+</main>
+<script>
+(function(){
+var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var P=document.getElementById('petals'),em=['🌸','💗','🌷','✨','🤍'];
+if(!reduce)for(var i=0;i<18;i++){var s=document.createElement('span');s.className='petal';s.textContent=em[i%5];s.style.left=Math.random()*100+'%';s.style.fontSize=(12+Math.random()*16)+'px';s.style.animationDuration=(9+Math.random()*10)+'s';s.style.animationDelay=(-Math.random()*15)+'s';P.appendChild(s)}
+function burst(x,y){for(var i=0;i<12;i++){var f=document.createElement('span');f.className='float';f.textContent=['💗','💕','🌸','💖'][i%4];f.style.left=x+'px';f.style.top=y+'px';f.style.setProperty('--x',((Math.random()-.5)*300)+'px');f.style.animationDelay=(i*50)+'ms';document.body.appendChild(f);setTimeout(function(el){el.remove()}.bind(null,f),2400)}}
+document.getElementById('heart').onclick=function(e){var r=e.currentTarget.getBoundingClientRect();burst(r.left+r.width/2,r.top)};
+var orb=document.getElementById('orb'),btn=document.getElementById('bstart'),run=false,t=[];
+function step(){if(!run)return;orb.classList.add('in');orb.textContent='Breathe in';t.push(setTimeout(function(){if(!run)return;orb.textContent='Hold';t.push(setTimeout(function(){if(!run)return;orb.classList.remove('in');orb.textContent='Breathe out';t.push(setTimeout(step,4000))},1500))},4000))}
+btn.onclick=function(){if(run){run=false;t.forEach(clearTimeout);t=[];orb.classList.remove('in');orb.textContent='Ready';btn.textContent='Start breathing'}else{run=true;btn.textContent='Stop';step()}};
+var items=[['Warm compress or hot water bottle','On your lower belly or back, 15 minutes'],['Drink something warm','Ginger, chamomile or plain warm water'],['Lie down with your knees up','Gentle on the lower back'],['Slow stretches','Child’s pose or a soft twist'],['Rest and watch something sweet','Your only job today']];
+var L=document.getElementById('list'),bar=document.getElementById('bar');
+items.forEach(function(it){var b=document.createElement('button');b.className='chk';b.setAttribute('aria-pressed','false');b.innerHTML='<span class="box">✓</span><span><b>'+it[0]+'</b><small>'+it[1]+'</small></span>';b.onclick=function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');var n=L.querySelectorAll('[aria-pressed=true]').length;bar.style.width=(n/items.length*100)+'%';if(n===items.length){var r=bar.getBoundingClientRect();burst(innerWidth/2,r.top)}};L.appendChild(b)});
+var moods={'😣 In pain':'I wish I could take it from you. Curl up, breathe slowly, and let me take care of everything else.','😢 Emotional':'Your feelings are real, and they are allowed. Cry if you need to. I’m right here.','😴 Tired':'Then rest, my love. Nothing else matters today. Sleep is a perfectly good plan.','😤 Cranky':'You’re allowed to be cranky. I’ll bring snacks and stay out of the way of the storm. 😄','🥺 Need a hug':'Consider this a very big, very warm hug, coming your way right now. 🤗'};
+var M=document.getElementById('mood'),msg=document.getElementById('msg');
+Object.keys(moods).forEach(function(k){var b=document.createElement('button');b.textContent=k;b.setAttribute('aria-pressed','false');b.onclick=function(e){M.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');msg.classList.remove('swap');void msg.offsetWidth;msg.textContent=moods[k];msg.classList.add('swap');var r=b.getBoundingClientRect();burst(r.left+r.width/2,r.top)};M.appendChild(b)});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
